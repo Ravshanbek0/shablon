@@ -3,7 +3,7 @@ import "./Header.css"
 import { Link } from 'react-router-dom'
 import Home from '../Home/Home'
 
-function Header() {
+function Header(setMainData,mainData) {
   return (
     <>
       <div className='header'>
@@ -17,7 +17,7 @@ function Header() {
           </header>
         </div>
       </div>
-      <Home />
+      <Home setMainData={setMainData} mainData={mainData}/>
     </>
   )
 }
