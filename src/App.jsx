@@ -5,20 +5,28 @@ import Navbar from './components/Navbar/Navbar'
 import Header from './components/Header/Header'
 import Login from './components/Login/Login'
 import Home from './components/Home/Home'
+import Checkregister from './components/Login/Checkregister'
+import Profile from './components/Profile/Profile'
 
-function App() {
+function App({ }) {
   const [mainData, setMainData] = useState([])
-  console.log(mainData);
-  
+  const [navbarData, setNavbarData] = useState([])
+  const [userPhone, setUserPhone] = useState("")
+  const [userOtpSecret, setUserOtpSecret] = useState("")
+  const [accessToken, setAccessToken] = useState(localStorage.getItem("token")?localStorage.getItem("token"):"")
+  console.log(accessToken);
+
   return (
-    <div>
+    <div className='container'>
       <BrowserRouter>
-        <Navbar />
+        <Navbar accessToken={accessToken} navbarData={navbarData} />
         <Routes>
           <Route path='/' element={<Header mainData={mainData} setMainData={setMainData} />} />
           <Route path='/' element={<Home mainData={mainData} setMainData={setMainData} />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/signup' element={<Login />} />
+          <Route path='/login' element={<Login setAccessToken={setAccessToken} />} />
+          <Route path='/profile' element={<Profile setNavbarData={setNavbarData} accessToken={accessToken} />} />
+          <Route path='/signup' element={<Login setUserOtpSecret={setUserOtpSecret} setUserPhone={setUserPhone} />} />
+          <Route path='/check' element={<Checkregister userPhone={userPhone} userOtpSecret={userOtpSecret} setAccessToken={setAccessToken} />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -6,8 +6,8 @@ import Home from '../Home/Home'
 function Header(setMainData,mainData) {
   return (
     <>
-      <div className='header'>
-        <div className="container">
+      <div className='header-o'>
+        <div className="">
           <header>
             <div className="text">
               <h1>Shablonlar dunyosi - Har turdagi dizayn shablonlari bilan ijodingizga qulaylik!</h1>

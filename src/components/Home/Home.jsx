@@ -8,15 +8,19 @@ function Home(mainData, setMainData) {
   const [data, setData] = useState([])
   const [data2, setData2] = useState([])
   const [categry, setCategory] = useState("all")
+
+  const [loader, setLoader] = useState(false)
+
   function filter(e) {
     setData(data)
-    const newData = data2.filter((item)=>{
-      return e==item.type
+    const newData = data2.filter((item) => {
+      return e == item.type
     })
     console.log(newData);
     setData(newData)
   }
   function homeData(params) {
+    setLoader(true)
     const requestOptions = {
       method: "GET",
       redirect: "follow"
@@ -27,8 +31,12 @@ function Home(mainData, setMainData) {
       .then((result) => {
         setData(result);
         setData2(result)
+        setLoader(false)
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setLoader(false)
+        console.log(error)
+      });
   }
   useEffect(() => {
     homeData()
@@ -86,16 +94,22 @@ function Home(mainData, setMainData) {
         </div>
         <div className="right-home">
           <h1>Shablonlar - Barchasi.</h1>
-          <div className="filter-right-box">
-            {data.length>0 ? data.map((item, index) => {
-              return <div key={index} className="filter-box-r">
+          {loader ? <div className="loader-modal">
+            <span className='loader'></span>
+          </div> : <div className="filter-right-box">
+
+
+            {data.map((item, index) => {
+              return (<div key={index} className="filter-box-r">
                 <img src={item.preview} alt="Shablon" />
                 <p>{item.name}</p>
                 <p>{item.price}$</p>
-              </div>
-            }) : data.length==0 && <h1>Hech qanday ma'lumot yo'q</h1>}
+              </div>)
+            })
+            }
+          </div>}
 
-          </div>
+
         </div>
       </div>
     </div>
