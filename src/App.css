@@ -7,4 +7,5 @@
   list-style: none;
   text-decoration: none;
   font-family: "Rubik", sans-serif;
+  user-select: none;
 }
