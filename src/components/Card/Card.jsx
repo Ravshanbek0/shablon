@@ -64,7 +64,7 @@ function Card() {
             console.log('Bog\'langan ma\'lumot:', linkedData);
             setCardData([linkedData]); // Ma'lumotni array ichida saqlash
             console.log(linkedData);
-            
+
             // setLoader(false);
             fetchAndLinkDataHome(linkedData.type)
 
@@ -138,9 +138,6 @@ function Card() {
                         <div className="price-section">
                             <span className="new-price">{cardData[0]?.price * 12800}so'm/{cardData[0]?.price}$</span>
                         </div>
-                        <div className="ratings">
-                            ⭐⭐⭐⭐⭐ <span>(5 ovoz)</span>
-                        </div>
 
                         <div className="product-info">
                             <p style={{
@@ -148,9 +145,10 @@ function Card() {
                                 justifyContent: "start",
                                 alignItems: "center",
                                 gap: "5px"
-                            }}><strong>Ko'rish:</strong> {cardData[0]?.link != null && (<a href={cardData[0]?.link} target='_blank'><p style={{
+                            }}> {cardData[0]?.link != "null" && (<a href={cardData[0]?.link} target='_blank'>
+                                <p style={{
 
-                            }} className="template-description-link"><span><CiLink /></span>Link</p></a>)}</p>
+                                }} className="template-description-link"><span><CiLink /></span>Link</p></a>)}</p>
                             <p><strong>To'lov:</strong> <span className="availability">Karta</span></p>
 
 
@@ -159,14 +157,17 @@ function Card() {
                             <button className="add-to-cart">Savatga qo'shish</button>
                             <button className="buy-now">Sotib olish</button>
                         </div>
+                        <div>
+                            <p className='card-desc'>{cardData[0]?.description?.slice(0,1000)}</p>
+                        </div>
 
                     </div>
 
                 </div>
                 <div style={{
-                    overflow : "auto",
-                    width : "30%",
-                    maxHeight : "85vh"
+                    overflow: "auto",
+                    width: "30%",
+                    maxHeight: "85vh"
                 }}>
                     <div className="right-home" style={{
                         flexWrap: "wrap",

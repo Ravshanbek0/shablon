@@ -26,7 +26,7 @@ function Profile({ accessToken, setNavbarData }) {
     const [price, setPrice] = useState()
     const [type, setType] = useState("WebSite")
     const [islink, setIsLink] = useState(false)
-    const [link, setLink] = useState("")
+    const [link, setLink] = useState(null)
 
     function getUser(params) {
         setLoaderUser(true)
@@ -259,7 +259,7 @@ function Profile({ accessToken, setNavbarData }) {
                                     <h3 className="template-title">{template.name}</h3>
                                     <h3 className="template-title">{template.price * 12800} so'm</h3>
                                     <p className="template-description">{template.description}</p>
-                                    {template.link != null && (<a href={template.link} target='_blank'><p className="template-description-link"><span><CiLink /></span>Link</p></a>)}
+                                    {template.link != "null" && (<a href={template.link} target='_blank'><p className="template-description-link"><span><CiLink /></span>Link</p></a>)}
                                     <span className={template?.status === "approved" ? "teplate-status status" : "teplate-status"}>{template?.status === "approved" ? "Qabul qilindi" : "Yuborildi"} </span>
 
                                 </div>)
@@ -277,7 +277,7 @@ function Profile({ accessToken, setNavbarData }) {
                         <button className="close-btn" onClick={handleCloseModal}>×</button>
                         <h2>Upload Image</h2>
                         <form className="modal-form">
-                            {imageFileInput == "" ? (<label htmlFor="image-upload" className="file-upload-label">
+                            {imageFileInput == "" ? (<label htmlFor="image-upload" className="">
                                 <input
                                     onChange={((e) => {
                                         setImageFile(e.target.files[0])
@@ -285,9 +285,9 @@ function Profile({ accessToken, setNavbarData }) {
                                     })}
                                     type="file"
                                     id="image-upload"
-                                    className="file-upload-input"
+                                    // className="file-upload-input"
                                 />
-                                <span className="plus-icon">+</span>
+                                {/* <span className="plus-icon">+</span> */}
                             </label>) : (
                                 <div>
                                     <img src={imageFileInput} alt="shablon rasmi" className='image-input-show' />
@@ -343,7 +343,9 @@ function Profile({ accessToken, setNavbarData }) {
                                 <select onChange={((e) => {
                                     setType(e.target.value)
                                     console.log(e.target.value);
-                                    setIsLink(true)
+                                    if (e.target.value != "Post dizayn" && e.target.value != "Logo" && e.target.value != "Youtube banner") {
+                                        setIsLink(true)
+                                    }
                                 })} name="" id="">
                                     <option value="WebSite">Web-site</option>
                                     <option value="Post dizayn">Post dizayn</option>

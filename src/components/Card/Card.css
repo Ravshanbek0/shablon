@@ -52,6 +52,7 @@
   max-width: 250px;
   border: 1px solid #ddd;
   border-radius: 8px;
+  cursor: pointer;
   /* pointer-events: none; */
 
 }
@@ -66,6 +67,7 @@
   margin-bottom: 10px;
   display: flex;
   align-items: center;
+  font-weight: 400;
   justify-content: space-between;
   padding-right: 10px;
 }
@@ -84,10 +86,19 @@
 }
 
 .new-price {
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
+  padding: 4px 12px;
+  font-weight: 400;
+  background-color: #f6ffed;
+  border: 2px solid #28a745;
+  color: #28a745;
+  border-radius: 8px;
 }
-
+.card-desc{
+  color: #999;
+  font-size: 16px;
+  max-width: 90%;
+}
 .discount-tag {
   background: #4CAF50;
   color: #fff;
