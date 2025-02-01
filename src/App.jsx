@@ -8,6 +8,7 @@ import Home from './components/Home/Home'
 import Checkregister from './components/Login/Checkregister'
 import Profile from './components/Profile/Profile'
 import Card from './components/Card/Card'
+import Buy from './components/Buy(demo)/Buy'
 
 function App({ }) {
   const [mainData, setMainData] = useState([])
@@ -30,12 +31,13 @@ function App({ }) {
         <Navbar accessToken={accessToken} navbarData={navbarData} />
         <Routes>
           <Route path='/' element={<Header mainData={mainData} setMainData={setMainData} />} />
-          <Route path='/card/:id' element={<Card />} />
+          <Route path='/card/:id' element={<Card accessToken={accessToken} />} />
           <Route path='/' element={<Home mainData={mainData} setMainData={setMainData} />} />
           <Route path='/login' element={<Login setAccessToken={setAccessToken} />} />
           <Route path='/profile' element={<Profile setNavbarData={setNavbarData} accessToken={accessToken} />} />
           <Route path='/signup' element={<Login setUserOtpSecret={setUserOtpSecret} setUserPhone={setUserPhone} />} />
           <Route path='/check' element={<Checkregister userPhone={userPhone} userOtpSecret={userOtpSecret} setAccessToken={setAccessToken} />} />
+          <Route path='/buy/:id' element={<Buy accessToken={accessToken} />} />
         </Routes>
       </BrowserRouter>
     </div>

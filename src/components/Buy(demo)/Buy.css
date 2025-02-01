@@ -1,0 +1,113 @@
+.container-buy {
+    text-align: center;
+    background: linear-gradient(to bottom, #04032D, #0A074D);
+    color: #ffffff;
+    padding: 40px;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h2 {
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .subtitle {
+    font-style: italic;
+    color: #BBBBBB;
+    margin-bottom: 20px;
+  }
+  
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+    max-width: 80%;
+  }
+  
+  .logo {
+    width: 300px;
+    background-color: white;
+    padding: 2px;
+    border-radius: 10px;
+  }
+  
+  .text {
+    max-width: 500px;
+    text-align: left;
+  }
+  .text h1{
+    font-size: 22px;
+    margin-top: 10px;
+    font-weight: 400;
+  }
+  .text h1 span{
+    font-weight: bold;
+    font-size: 24px;
+    border: 1px solid;
+    padding: 2px 6px;
+    border-radius: 8px;
+    background-color: white;
+    color: #04032D;
+  }
+  .btn {
+    background-color: #1E90FF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    margin-top: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .btn:hover {
+    background-color: #4682B4;
+  }
+  
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .logo {
+      width: 120px;
+      margin-bottom: 15px;
+    }
+  
+    .text {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 24px;
+    }
+  
+    .subtitle {
+      font-size: 14px;
+    }
+  
+    .btn {
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+  
+    .logo {
+      width: 100px;
+    }
+  }
+  

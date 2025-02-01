@@ -7,15 +7,14 @@ function Header(setMainData,mainData) {
   return (
     <>
       <div className='header-o'>
-        <div className="">
+        
           <header>
-            <div className="text">
+            <div className="text-header">
               <h1>Shablonlar dunyosi - Har turdagi dizayn shablonlari bilan ijodingizga qulaylik!</h1>
               <p>Har turdagi dizaynlar uchun zamonaviy va oson moslashtiriladigan shablonlar. Tezkor yuklab olish va loyihalaringizni tezda ishga tushirish imkoniyati!</p>
             </div>
             <img src="./img/header.png" alt="" />
           </header>
-        </div>
       </div>
       <Home setMainData={setMainData} mainData={mainData}/>
     </>

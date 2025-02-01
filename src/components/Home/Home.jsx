@@ -15,12 +15,17 @@ function Home(mainData, setMainData) {
   const [imageKey, setIMageKey] = useState("")
   let imgurl;
   function filter(e) {
-    setData(data)
-    const newData = data2.filter((item) => {
-      return e == item.type
-    })
-    console.log(newData);
-    setData(newData)
+    if (e != "All") {
+      setData(data)
+      const newData = data2.filter((item) => {
+        return e == item.type
+      })
+      console.log(newData);
+      setData(newData)
+    }else if (e === "All") {
+      setData(data2)
+    }
+
   }
   const templateUrl = 'https://shablon-uz-mu.vercel.app/api/templates/';
   const imageUrl = 'https://shablon-uz-mu.vercel.app/api/images/';
@@ -112,21 +117,56 @@ function Home(mainData, setMainData) {
           </div>
         </div>
         <div className="right-home">
-          <h1>Shablonlar - Barchasi.</h1>
+          <div className='right-home-filter-box'>
+            <h1>Shablonlar - Barchasi.</h1>
+            <select onChange={(e) => {
+              filter(e.target.value)
+            }} className="">
+              <option value={"All"} className="">
+                All
+              </option>
+              <option value={"WebSite"} className="">
+                Web-site
+              </option>
+              <option value={"Post dizayn"} className="">
+                Post dizayn
+              </option>
+              <option value={"Logo"} className="">
+                Logo
+              </option>
+              <option value={"Figma"} className="">
+                Figma
+              </option>
+              <option value={"Bot"} className="">
+                Bot
+              </option>
+              <option value={"app"} className="">
+                Android/Ios app
+              </option>
+              <option value={"Youtube banner"} className="">
+                Youtube banner
+              </option>
+              <option value={"channel"} onClick={(e) => {
+                filter(e.target.value)
+              }} className="">
+                Insta/Tg kanal
+              </option>
+            </select>
+          </div>
           {loader ? <div className="loader-modal">
             <span className='loader'></span>
           </div> : <div className="filter-right-box">
 
 
             {data.map((item, index) => {
-              return (<Link to={`/card/${item.id}`}>
-                <div key={index} className="filter-box-r">
+              return (
+                <Link to={`/card/${item.id}`} key={index} className="filter-box-r">
                   <img src={item.imageUrl} alt="Shablon" />
                   <p>{item.name}</p>
                   <span>{item.type}</span>
                   <p>{item.price}$</p>
 
-                </div></Link>)
+                </Link>)
             })
             }
           </div>}

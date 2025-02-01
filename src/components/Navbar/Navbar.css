@@ -1,10 +1,13 @@
-nav{
+nav {
     background-color: #04032D;
     width: 100%;
     height: auto;
     padding-top: 15px;
+    position: fixed;
+    z-index: 555588858585;
 }
-.nav{
+
+.nav {
     width: 100%;
     height: 69px;
     display: flex;
@@ -13,31 +16,51 @@ nav{
     padding-bottom: 15px;
     padding: 0 20px 15px 20px;
 }
-.left-nav{
+
+.left-nav {
     color: #fff;
     display: flex;
     gap: 85px;
 }
-.left-nav h1{
+
+.left-nav h1 {
     color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
 }
-.left-nav p{
+
+.left-nav h1 img {
+    max-width: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-nav p {
     font-size: 16px;
 }
-.right-nav{
+
+.right-nav {
     color: #fff;
     display: flex;
     gap: 20px;
     align-items: center;
 }
-.login-btn{
+
+.login-btn {
     background: none;
     color: white;
     border: none;
     font-size: 18px;
     cursor: pointer;
 }
-.sign-btn{
+
+.sign-btn {
     background-color: #1678FF;
     width: 150px;
     height: 35px;
@@ -48,13 +71,14 @@ nav{
     transition: all ease .8s;
 
 }
-.sign-btn:hover{
+
+.sign-btn:hover {
     border: 2px solid #1678FF;
     border-radius: 8px;
     background: none;
 }
 
-.nav-profile{
+.nav-profile {
     cursor: pointer;
     margin-right: 10px;
     display: flex;
@@ -63,9 +87,55 @@ nav{
     justify-content: center;
     color: #fff;
 }
-.nav-profile span{
+
+.nav-profile span {
     font-size: 24px;
 }
-.nav-profile p{
+
+.nav-profile p {
     font-size: 14px;
+}
+
+@media screen and (max-width:550px) {
+    .left-nav h1 {
+        color: #fff;
+        font-weight: 500;
+        font-size: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+
+    }
+
+    .left-nav h1 img {
+        max-width: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-btn {
+        font-size: 14px;
+    }
+
+    .sign-btn {
+        background-color: #1678FF;
+        width: 100px;
+        height: 35px;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        border: none;
+        transition: all ease .8s;
+    }
+    .right-nav{
+        gap: 5px;
+    }
+    .nav {
+        width: 100%;
+        height: auto;
+        padding-bottom: 15px;
+        padding: 0 10px 15px 10px;
+    }
 }

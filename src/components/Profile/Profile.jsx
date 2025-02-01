@@ -27,6 +27,7 @@ function Profile({ accessToken, setNavbarData }) {
     const [type, setType] = useState("WebSite")
     const [islink, setIsLink] = useState(false)
     const [link, setLink] = useState(null)
+    const [service, setService] = useState(false)
 
     function getUser(params) {
         setLoaderUser(true)
@@ -160,6 +161,7 @@ function Profile({ accessToken, setNavbarData }) {
             formData.append('image', imageId);
             formData.append('type', `${type}`);
             formData.append('link', `${link}`);
+            formData.append('service', service);
 
             axios.post('https://shablon-uz-mu.vercel.app/api/templates/create/', formData, {
                 headers: {
@@ -231,7 +233,7 @@ function Profile({ accessToken, setNavbarData }) {
             <aside className="user-info">
                 {loaderUser ? <div className="loader-modal">
                     <span className='loader'></span></div> : <div className="user-card">
-                    <img src={user.avatar} alt="User Avatar" className="user-avatar" />
+                    {/* <img src={user.avatar} alt="User Avatar" className="user-avatar" /> */}
                     <h2 className="user-name">{userData.first_name}</h2>
                     <p className="user-email">ID: {userData.id}</p>
                     <p className="user-role">{userData.phone_number}</p>
@@ -258,7 +260,7 @@ function Profile({ accessToken, setNavbarData }) {
 
                                     <h3 className="template-title">{template.name}</h3>
                                     <h3 className="template-title">{template.price * 12800} so'm</h3>
-                                    <p className="template-description">{template.description}</p>
+                                    <p className="template-description" style={{maxWidth: "100%"}}>{template.description}</p>
                                     {template.link != "null" && (<a href={template.link} target='_blank'><p className="template-description-link"><span><CiLink /></span>Link</p></a>)}
                                     <span className={template?.status === "approved" ? "teplate-status status" : "teplate-status"}>{template?.status === "approved" ? "Qabul qilindi" : "Yuborildi"} </span>
 
@@ -285,7 +287,7 @@ function Profile({ accessToken, setNavbarData }) {
                                     })}
                                     type="file"
                                     id="image-upload"
-                                    // className="file-upload-input"
+                                // className="file-upload-input"
                                 />
                                 {/* <span className="plus-icon">+</span> */}
                             </label>) : (
@@ -339,12 +341,35 @@ function Profile({ accessToken, setNavbarData }) {
                                 />
                             </label>
                             <label htmlFor="" className="modal-input-i">
+                                <h1>Service xizmati(o'zgartirib berish):</h1>
+
+                                <input
+                                    value={true}
+                                    style={{
+                                        padding: 10
+                                    }}
+                                    onChange={((e) => {
+                                        if (!service) {
+                                            setService(true)
+                                        }else{
+                                            setService(false);
+                                        }
+                                        
+                                    })}
+                                    type="checkbox"
+                                    placeholder='Price....'
+                                />
+                            </label>
+                            <label htmlFor="" className="modal-input-i">
                                 <h1>Shablon turi:</h1>
                                 <select onChange={((e) => {
                                     setType(e.target.value)
                                     console.log(e.target.value);
-                                    if (e.target.value != "Post dizayn" && e.target.value != "Logo" && e.target.value != "Youtube banner") {
+                                    if (e.target.value == "WebSite" || e.target.value == "" || e.target.value == "Figma" || e.target.value == "Bot" ||  e.target.value == "app" || e.target.value == "channel") {
                                         setIsLink(true)
+                                    }
+                                    if(e.target.value == "Post dizayn"  || e.target.value == "Logo" || e.target.value == "Youtube banner" ){
+                                        setIsLink(false)
                                     }
                                 })} name="" id="">
                                     <option value="WebSite">Web-site</option>

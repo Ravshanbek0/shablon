@@ -106,7 +106,7 @@ function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
   return (
     <>
       {x == "/login" ? <div className={'login'}>
-        <div className="left-login">
+        <div className="left-login responsive-none">
           <h1>Qaytib kelganingizdan xursandmiz!</h1>
           <p>Sizni yana ko'rganimizdan mamnunmiz! Yangi va yanada qulay xizmatlar bilan ijodingizga qanot bag'ishlashda davom etamiz. Foydali shablonlar va dizayn yechimlarini topishga tayyormisiz? Keling, yangi imkoniyatlarni birga o'rganamiz!</p>
         </div>
@@ -129,7 +129,7 @@ function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
         </div>
       </div> : //sign-up//
         <div className="login active">
-          <div className="left-login">
+          <div className="left-login responsive-none">
             <h1>Xush kelibsiz!</h1>
             <p>Sizning tashrif buyurganingizdan mamnunmiz! Yangi va yanada qulay xizmatlar bilan ijodingizga qanot bag'ishlashda davom etamiz. Foydali shablonlar va dizayn yechimlarini topishga tayyormisiz? Keling, yangi imkoniyatlarni birga o'rganamiz!</p>
           </div>

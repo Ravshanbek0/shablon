@@ -17,7 +17,11 @@ function Navbar({ navbarData, accessToken }) {
                 <div className="container">
                     <div className="nav">
                         <div className="left-nav">
-                            <Link to={'/'}><h1>Shablon</h1></Link>
+                            <Link to={'/'}><h1>
+                                <img src="./img/last draft.png" alt="" />
+                                SHABLON
+                            </h1>
+                            </Link>
                             {/* <p>Open source</p>
                             <p>Biz haqimizda</p> */}
                         </div>

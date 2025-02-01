@@ -6,7 +6,7 @@ import { CiLink } from "react-icons/ci";
 import { Link } from "react-router-dom"
 
 
-function Card() {
+function Card({ accessToken }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState("");
     const [data, setData] = useState([]);
@@ -133,6 +133,7 @@ function Card() {
                         <h1>{cardData[0]?.name}
                             <span className="discount-tag">{cardData[0]?.type}</span>
                         </h1>
+                        <p><b>ID:</b>{cardData[0]?.id}</p>
 
 
                         <div className="price-section">
@@ -153,30 +154,26 @@ function Card() {
 
 
                         </div>
+                        <p className='service-p'>O'zgartirib berish xizmati:{cardData[0]?.service ? <span className='service-true'>Mavjud !</span> : <span className='service-false'>Mavjud emas !</span>}</p>
                         <div className="buttons">
-                            <button className="add-to-cart">Savatga qo'shish</button>
-                            <button className="buy-now">Sotib olish</button>
+                            {accessToken != "" ? <Link to={`/buy/${cardData[0]?.id}`}><button className="buy-now">Sotib olish</button></Link> : accessToken == "" ? <Link to={`/login`}><button className="buy-now">Sotib olish</button></Link> : <Link to={`/buy/${cardData[0]?.id}`}><button className="buy-now">Sotib olish</button></Link>}
+
+
                         </div>
                         <div>
-                            <p className='card-desc'>{cardData[0]?.description?.slice(0,1000)}</p>
+
+                            <p className='card-desc'>{cardData[0]?.description?.slice(0, 1000)}</p>
                         </div>
 
                     </div>
 
                 </div>
-                <div style={{
-                    overflow: "auto",
-                    width: "30%",
-                    maxHeight: "85vh"
-                }}>
-                    <div className="right-home" style={{
-                        flexWrap: "wrap",
-                        maxWidth: "220px",
-                        marginRight: 0
-                    }}>
+                <div className='right-products'
+                >
+                    <div className="right-home right-products-box">
                         {loader ? <div className="loader-modal">
                             <span className='loader'></span>
-                        </div> : <div className="filter-right-box">
+                        </div> : <div className="filter-right-box card-filter0right-box">
 
 
                             {data.map((item, index) => {
