@@ -9,12 +9,9 @@ header {
     gap: 60px;
     justify-content: center;
     align-items: center;
-    padding: 0 20px;
-    padding-top: 50px;
-    
+    padding: 0 20px;    
 }
 .text-header {
-    
     width: auto;
 }
 header .text-header h1 {
@@ -57,24 +54,24 @@ header img {
         flex-direction: column-reverse;
         align-items: center;
         padding: 0px 10px;
-        padding-top: 70px;
+        padding-bottom: 10px;
     }
 
     header .text-header h1 {
-        font-size: 20px;
+        font-size: 18px;
         text-align: center;
         color: #fff;  
         width: 90%;
     }
 
     header .text-header p {
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
         width: 90%;
     }
 
     header img {
-        width: 80%;
+        width: 75%;
         height: auto;
         margin: 0 auto;
     }

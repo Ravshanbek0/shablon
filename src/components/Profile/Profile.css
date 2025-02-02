@@ -5,7 +5,6 @@
   justify-content: space-between;
   padding: 20px;
   gap: 30px;
-  padding-top: 14vh;
   overflow: hidden;
 }
 
@@ -305,7 +304,6 @@
     width: 100%;
     min-height: 350px;
     position: relative;
-    margin-top: 10vh;
 }
 
   .templates-section {
