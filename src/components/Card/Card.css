@@ -279,4 +279,13 @@
     width: 90%;
     height: 30%;
   }
+  .service-p{
+    font-size: 14px;
+  }
+  .new-price{
+    font-size: 16px;
+  }
+  .availability{
+    font-size: 14px;
+  }
 }

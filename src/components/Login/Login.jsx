@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 import "./Login.css"
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
-function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
+function Login({ setUserPhone, setUserOtpSecret, setAccessToken }) {
   const navigate = useNavigate()
 
   const { pathname } = useLocation()
   const [x, setX] = useState()
   const [userPhoneNumber, setUserPhoneNumber] = useState("")
   const [userPassword, setuserPassword] = useState("")
+  const [errorAlert, setErrorAlert] = useState(false)
+  const [errorAlertLogin, setErrorAlertLogin] = useState(false)
 
   const [userRegisterPhone, setUserRegisterPhone] = useState("")
   const [userRegisterName, setUserRegisterName] = useState("")
@@ -26,10 +31,10 @@ function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
     setLoader(true)
     e.preventDefault()
     if (userPhoneNumber == "") {
-      alert("Raqam kiritilmagan")
+      setErrorAlertLogin(true)
     }
     if (userPassword == "") {
-      alert("Parol kiritilmagan")
+      setErrorAlertLogin(true)
     }
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -52,10 +57,11 @@ function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
         console.log(result)
         if (result.access) {
           setAccessToken(result.access)
-          localStorage.setItem("token",result.access)
-          navigate("/profile")
+          localStorage.setItem("token", result.access)
+          navigate("/")
         }else{
-          alert("parol yoki nomer xato")
+        setErrorAlertLogin(true)
+
         }
         setLoader(false)
         setUserPhoneNumber("")
@@ -64,6 +70,8 @@ function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
         setLoader(false)
         setUserPhoneNumber("")
         setuserPassword("")
+        setErrorAlertLogin(true)
+
         console.error(error)
       });
   }
@@ -99,12 +107,27 @@ function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
       })
       .catch((error) => {
         setLoader(false)
-        console.error(error)
+        setErrorAlert(true)
       });
   }
 
   return (
     <>
+      {errorAlert && (<Stack sx={{ width: '100%' }} style={{ position: "fixed", top: "0" }} spacing={2}>
+        <Alert severity="error">
+          <AlertTitle>Error</AlertTitle>
+          Bunday nomer bn ro'yxatdan o'tilgan
+        </Alert>
+      </Stack>)}
+      {errorAlertLogin && (
+        <Stack sx={{ width: '100%' }} style={{ position: "fixed", top: "0" }} spacing={2}>
+
+          <Alert severity="error">
+            <AlertTitle>Error</AlertTitle>
+            Parol yoki nomerda xatolik!
+          </Alert>
+        </Stack>
+      )}
       {x == "/login" ? <div className={'login'}>
         <div className="left-login responsive-none">
           <h1>Qaytib kelganingizdan xursandmiz!</h1>
@@ -120,7 +143,7 @@ function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
             <label htmlFor="">Parolni kiriting:</label>
             <input value={userPassword} onChange={((e) => {
               setuserPassword(e.target.value)
-            })} type="text" placeholder='Parol...' />
+            })} type="password" placeholder='Parol...' />
             <button onClick={loginToken}>
               {loader ? <span className='sign-loader'></span> : "Kirish"}
             </button>
@@ -148,7 +171,7 @@ function Login({ setUserPhone, setUserOtpSecret,setAccessToken }) {
               <label htmlFor="">Parol yarating:</label>
               <input value={userRegisterCode} onChange={((e) => {
                 setUserRegisterCode(e.target.value)
-              })} type="text" placeholder='Parol...' />
+              })} type="password" placeholder='Parol...' />
               <button onClick={singUpToken}>{loader ? <span className='sign-loader'></span> : "Ro'yxatdan o'tish"}</button>
               <Link to={'/login'}><p>Allaqachon ro'yxatdan o'tganmisiz? <span>Kirish</span></p></Link>
             </form>

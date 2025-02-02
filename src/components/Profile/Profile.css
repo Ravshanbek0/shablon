@@ -321,6 +321,13 @@
   .add-template-btn{
     display: none !important;
   }
+  .edit-profile-btn{
+    position: static;
+    margin-top: 20px;
+  }
+  .templates-section h1{
+    font-size: 22px;
+  }
 }
 
 .add-template-btn {

@@ -29,7 +29,7 @@ function Checkregister({ userPhone, userOtpSecret,setAccessToken }) {
                 setAccessToken(result.access)
                 localStorage.setItem("token",result.access)
                 setLoader(false)
-                navigate('/profile')
+                navigate('/')
             }).catch((error) => {
                 setLoader(false)
                 console.error(error)
@@ -42,7 +42,9 @@ function Checkregister({ userPhone, userOtpSecret,setAccessToken }) {
                 <div className="check">
                     <form action="" className="form">
                         <h1>+{userPhone}</h1>
-                        <label htmlFor="">6 talik kodni kiriting:</label>
+                        {/* <label htmlFor="">6 talik kodni kiriting:</label> */}
+                        <label htmlFor="">Shu raqamni kiriting: 999999</label>
+
                         <input onChange={((e) => {
                             setSmsCode(e.target.value)
                         })} type="number" placeholder='code' />

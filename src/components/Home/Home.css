@@ -273,6 +273,8 @@ body {
         margin-left: 10px;
         font-size: 14px;
     }
-
+    .filter-right-box{
+        margin-bottom: 40px;
+    }
 
 }
