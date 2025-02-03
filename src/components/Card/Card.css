@@ -277,7 +277,7 @@
     align-items: center;
     text-align: center;
     width: 90%;
-    height: 30%;
+    height: 45%;
   }
   .service-p{
     font-size: 14px;
@@ -287,5 +287,43 @@
   }
   .availability{
     font-size: 14px;
+  }
+}
+@media screen and (max-width:390px) {
+  .service-false{
+    font-size: 12px;
+  }
+}
+@media screen and (min-width:550px) and (max-width:913px) {
+  .product-card{
+    flex-direction: column;
+  }
+  .card-container{
+    padding: 10px 10px;
+    gap: 15px;
+    min-height: 400px;
+    align-items: center;
+  }
+  .right-products{
+    width: 100%;
+    max-height: 220px;
+    margin-top: 15px;
+  }
+  .card-filter0right-box{
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .modal-content-home {
+    position: relative;
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 90%;
+    height: 65%;
   }
 }

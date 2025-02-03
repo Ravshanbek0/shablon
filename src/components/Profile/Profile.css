@@ -288,10 +288,6 @@
   cursor: pointer;
 }
 
-.upload-btn:hover {
-  /* background-color: #45a049; */
-}
-
 /* Responsiv dizayn */
 @media screen and (max-width: 768px) {
   .profile-container {
@@ -348,10 +344,6 @@
   z-index: 1000;
   /* Eng yuqori z-index */
   cursor: pointer;
-}
-
-.add-template-btn:hover {
-  /* background-color: #45a049; */
 }
 
 .modal-input-i {
