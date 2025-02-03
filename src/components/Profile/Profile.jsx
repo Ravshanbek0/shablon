@@ -171,6 +171,7 @@ function Profile({ accessToken, setNavbarData }) {
             })
                 .then(response => {
                     console.log('Response:', response.data);
+                    window.location.reload()
                 })
                 .catch(error => {
                     console.error('Error:', error);

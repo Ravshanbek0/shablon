@@ -59,8 +59,8 @@ function Login({ setUserPhone, setUserOtpSecret, setAccessToken }) {
           setAccessToken(result.access)
           localStorage.setItem("token", result.access)
           navigate("/")
-        }else{
-        setErrorAlertLogin(true)
+        } else {
+          setErrorAlertLogin(true)
 
         }
         setLoader(false)
@@ -143,6 +143,7 @@ function Login({ setUserPhone, setUserOtpSecret, setAccessToken }) {
             <label htmlFor="">Parolni kiriting:</label>
             <input value={userPassword} onChange={((e) => {
               setuserPassword(e.target.value)
+              console.log(e.target.value)
             })} type="password" placeholder='Parol...' />
             <button onClick={loginToken}>
               {loader ? <span className='sign-loader'></span> : "Kirish"}
